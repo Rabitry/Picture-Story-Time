@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+
 
 void main() {
   runApp(PictureStoryApp());
@@ -64,6 +66,7 @@ class StoryLibraryScreen extends StatelessWidget {
 
 class StoryViewerScreen extends StatelessWidget {
   final Story story;
+  FlutterTts ftts = FlutterTts();
 
   StoryViewerScreen({required this.story});
 
@@ -90,8 +93,20 @@ class StoryViewerScreen extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 // Implement interactive elements or read-aloud functionality
+                  await ftts.setLanguage("en-US");
+                  await ftts.setSpeechRate(0.5); //speed of speech
+                  await ftts.setVolume(1.0); //volume of speech
+                  await ftts.setPitch(1); //pitc of sound
+                  var result = await ftts.speak("Once upon a time, a hare and tortoise lived in a jungle. The hare was proud of his speed. He used to laugh at the tortoise for his slow speed. The tortoise couldnot bear this. One day he challenged the hare to run a race with him. The hare accepted the challenge.");
+                  if(result == 1){
+                              //speaking
+                  }else{
+                              //not speaking
+                  }
+
+
               },
               child: Text('Read Aloud'),
             ),
