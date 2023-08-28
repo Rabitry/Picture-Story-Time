@@ -95,11 +95,11 @@ class StoryViewerScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 // Implement interactive elements or read-aloud functionality
-                  await ftts.setLanguage("en-US");
-                  await ftts.setSpeechRate(0.5); //speed of speech
-                  await ftts.setVolume(1.0); //volume of speech
+                await ftts.setLanguage("en-US");
+                  await ftts.setSpeechRate(1.0); //speed of speech
+                   await ftts.setVolume(2.0); //volume of speech
                   await ftts.setPitch(1); //pitc of sound
-                  var result = await ftts.speak("Once upon a time, a hare and tortoise lived in a jungle. The hare was proud of his speed. He used to laugh at the tortoise for his slow speed. The tortoise couldnot bear this. One day he challenged the hare to run a race with him. The hare accepted the challenge.");
+                  var result = await ftts.speak(story.content);
                   if(result == 1){
                               //speaking
                   }else{
@@ -130,7 +130,7 @@ List<Story> storyList = [
   Story(
     title: 'The Hare and the Tortoise',
     coverImage: 'assets/picture1.jpg',
-    content: 'Once upon a time...',
+    content: 'Once upon a time, a hare and tortoise lived in a jungle. The hare was proud of his speed. He used to laugh at the tortoise for his slow speed. The tortoise couldnot bear this. One day he challenged the hare to run a race with him. The hare accepted the challenge.',
   ),
   // Add more stories here
 ];
